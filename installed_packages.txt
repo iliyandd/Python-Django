@@ -1,0 +1,9 @@
+1) Conda
+2) PostgreSQL
+3) Django
+4) Cookiecutter
+
+-> EveryCheese registration data:
+name: cheesehead
+email: cheesehead@example.com
+password: 11Nn1213
