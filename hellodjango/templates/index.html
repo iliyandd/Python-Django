@@ -1,2 +1,37 @@
-<h1>Greetings</h1>
-<p>Hello, world!</p>
+<html>
+
+<head>
+    <title>
+        My personal information:
+    </title>
+</head>
+
+<body>
+    <h1>My personal information:</h1>
+    <article>
+        <span>
+            {{first | upper}}   {{last| upper}}    {{age| upper}}.
+            <br>
+        </span>
+        <span>
+            {% if age < 12 %}
+                You are a kid.
+            {% elif age < 18 %}
+                You are a teenager.
+            {% else %}
+                You are an adult.
+            {% endif %}
+        </span>
+        <br>
+        <span>Your parents are...</span>
+        <ul>
+            {% for parent in parents %}
+                <li>
+                    {{parent | upper}}
+                </li>
+            {% endfor %}
+        </ul>
+    </article>
+</body>
+
+</html>
