@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>
+            Check property area
+        </title>
+    </head>
+
+    <body>
+        <ul>
+            {% for property in properties %}
+            <li>
+                {% if property == "house" %}
+                    It is a house.<br>
+                {% elif property == "apartament" %}
+                    It is a apartament.<br>
+                {% else %}
+                    Something else.<br>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</html>
