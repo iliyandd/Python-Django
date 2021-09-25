@@ -1,1 +1,1 @@
-My Django web-sites.
+Learning Django.
