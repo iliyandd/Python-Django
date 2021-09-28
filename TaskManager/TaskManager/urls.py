@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from Taskmanager.views import save_project, hello, read_projects
+
 admin.autodiscover()
 
 urlpatterns = [
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('hello/', hello, name="hello_page"),
+    path('saving/', save_project, name="saving_project"),
+    path('retrieving/', read_projects, name="reading_projects")
 ]
