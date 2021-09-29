@@ -43,4 +43,7 @@ class Task(models.Model):
     importance = models.IntegerField(verbose_name="Importance")
     project = models.ForeignKey(Project, verbose_name="Project", null=True, default=None, blank=True, on_delete=models.CASCADE)
     app_user = models.ForeignKey(Developer, verbose_name="User", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
     

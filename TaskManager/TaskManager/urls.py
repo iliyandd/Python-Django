@@ -24,5 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', hello, name="hello_page"),
     path('saving/', save_project, name="saving_project"),
-    path('retrieving/', display_projects, name="reading_projects")
+    path('retrieving/', display_projects, name="displaying_projects")
 ]
