@@ -16,4 +16,11 @@ def hello(request):
 
 def display_projects(request):
     all_projects = Project.objects.all()
+
+    # This will load only projects associated with me.
+    # all_projects = Project.objects.filter(client_name="Iliyan")
+
+    # Displays the first project which satisfies the criteria.
+    # all_projects = Project.objects.get(client_name="Iliyan")
+
     return render(request, 'displaying.html', {"action": "Display all projects.", "all_projects": all_projects})

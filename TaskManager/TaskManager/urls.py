@@ -22,7 +22,7 @@ admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello, name="hello_page"),
+    path('', hello, name="hello_page"),
     path('saving/', save_project, name="saving_project"),
     path('retrieving/', display_projects, name="reading_projects")
 ]
