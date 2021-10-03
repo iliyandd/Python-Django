@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Q
 from Taskmanager.models import Project, Task
 
 # Create your views here.
@@ -32,7 +33,17 @@ def display_projects(request):
     # Task.objects.filter(title="Task 1").update(title="New task 1")
 
     # Deletes one/multiple record/s.
-    one_task = Task.objects.get(id = 1)
-    one_task.delete()
+    # one_task = Task.objects.get(id = 1)
+    # one_task.delete()
+
+    # Using OR operator.
+    # project_list = Project.objects.filter(Q(client_name="Iliyan") | Q(client_name="Spasimira"))
+
+    # Lower and greater than lookups
+    # frequent_tasks = Task.objects.filter(time_elapsed__gte = 4)
+
+    # Making a raw SQL query.
+    # all_projects = Project.objects.raw("SELECT * FROM TaskManager_project")
+
 
     return render(request, 'displaying.html', {"action": "Display all projects.", "all_projects": all_projects})
