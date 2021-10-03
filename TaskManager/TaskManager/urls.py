@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Taskmanager.views import save_project, hello, display_projects
+from Taskmanager.views import hello, save_project, display_projects, create_developer
 
 admin.autodiscover()
 
@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', hello, name="hello_page"),
     path('saving/', save_project, name="saving_project"),
-    path('retrieving/', display_projects, name="displaying_projects")
+    path('retrieving/', display_projects, name="displaying_projects"),
+    path('create-developer/', create_developer, name="create_developer")
 ]
