@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from Taskmanager.models import Project
+from Taskmanager.models import Project, Developer, Supervisor
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -15,7 +16,7 @@ def save_project(request):
 
 
 def display_projects(request):
-    all_projects = Project.objects.all()
+    all_supervisors = Supervisor.objects.all()
 
     # This will load only projects associated with me.
     # all_projects = Project.objects.filter(client_name="Iliyan")
@@ -45,8 +46,43 @@ def display_projects(request):
     # all_projects = Project.objects.raw("SELECT * FROM TaskManager_project")
 
 
-    return render(request, 'displaying.html', {"action": "Display all projects.", "all_projects": all_projects})
+    return render(request, 'displaying.html', {"action": "Display all supervisors.", "all_supervisors": all_supervisors})
 
 
 def create_developer(request):
-    return render(request, 'create_developer.html')
+    error = False
+
+    # If form has posted
+    if request.POST:
+        if 'name' in request.POST:
+            name = request.POST.get('name', '')
+        else:
+            error = True
+
+        if 'login' in request.POST:
+            login = request.POST.get('login', '')
+        else:
+            error = True
+
+        if 'password' in request.POST:
+            password = request.POST.get('password', '')
+        else:
+            error = True
+
+        if 'supervisor' in request.POST:
+            supervisor_id = request.POST.get('supervisor', '')
+        else:
+            error = True
+
+        if not error:
+            supervisor = Supervisor.objects.get(id = supervisor_id)
+            new_dev = Developer(name=name, login=login, password=password, my_supervisor=supervisor)
+            new_dev.save()
+
+            return HttpResponse("New developer is added.")
+        else:
+            return HttpResponse("An error is occured.")
+    else:
+        supervisors_list = Supervisor.objects.all()
+
+        return render(request, 'create_developer.html', {'supervisors_list': supervisors_list})
