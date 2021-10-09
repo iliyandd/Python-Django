@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from Taskmanager.models import Project, Developer, Supervisor
 from django.http import HttpResponse
+from django import forms
 
 # Create your views here.
 
@@ -49,40 +50,72 @@ def display_projects(request):
     return render(request, 'displaying.html', {"action": "Display all supervisors.", "all_supervisors": all_supervisors})
 
 
+# using HTML form
+# def create_developer(request):
+#     error = False
+
+#     # If form has posted
+#     if request.POST:
+#         if 'name' in request.POST:
+#             name = request.POST.get('name', '')
+#         else:
+#             error = True
+
+#         if 'login' in request.POST:
+#             login = request.POST.get('login', '')
+#         else:
+#             error = True
+
+#         if 'password' in request.POST:
+#             password = request.POST.get('password', '')
+#         else:
+#             error = True
+
+#         if 'supervisor' in request.POST:
+#             supervisor_id = request.POST.get('supervisor', '')
+#         else:
+#             error = True
+
+#         if not error:
+#             supervisor = Supervisor.objects.get(id = supervisor_id)
+#             new_dev = Developer(name=name, login=login, password=password, my_supervisor=supervisor)
+#             new_dev.save()
+
+#             return HttpResponse("New developer is added.")
+#         else:
+#             return HttpResponse("An error is occured.")
+#     else:
+#         supervisors_list = Supervisor.objects.all()
+
+#         return render(request, 'create_developer.html', {'supervisors_list': supervisors_list})
+
+
+# using Django from
+class FormInscription(forms.Form):
+    name = forms.CharField(label="Name", max_length=30)
+    login = forms.CharField(label="Login", max_length=30)
+    password = forms.CharField(label="Password", widget=forms.PasswordInput)
+    supervisor = forms.ModelChoiceField(label="Supervisor", queryset=Supervisor.objects.all())
+
+
 def create_developer(request):
-    error = False
-
-    # If form has posted
     if request.POST:
-        if 'name' in request.POST:
-            name = request.POST.get('name', '')
-        else:
-            error = True
+        form = FormInscription(request.POST)
 
-        if 'login' in request.POST:
-            login = request.POST.get('login', '')
-        else:
-            error = True
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            login = form.cleaned_data['login']
+            password = form.cleaned_data['password']
+            supervisor = form.cleaned_data['supervisor']
 
-        if 'password' in request.POST:
-            password = request.POST.get('password', '')
-        else:
-            error = True
+            new_developer = Developer(name=name, login=login, password=password, email='', my_supervisor=supervisor)
+            new_developer.save()
 
-        if 'supervisor' in request.POST:
-            supervisor_id = request.POST.get('supervisor', '')
+            return HttpResponse("Developer added.")
         else:
-            error = True
-
-        if not error:
-            supervisor = Supervisor.objects.get(id = supervisor_id)
-            new_dev = Developer(name=name, login=login, password=password, my_supervisor=supervisor)
-            new_dev.save()
-
-            return HttpResponse("New developer is added.")
-        else:
-            return HttpResponse("An error is occured.")
+            return render(request, 'create_developer.html', {'form': form})
+            # return redirect(request.path)
     else:
-        supervisors_list = Supervisor.objects.all()
+        form = FormInscription()
 
-        return render(request, 'create_developer.html', {'supervisors_list': supervisors_list})
+        return render(request, 'create_developer.html', {'form': form})
