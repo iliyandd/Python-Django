@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add CV</title>
+</head>
+<body style="background-color: #f0c6c673;">
+    <h1>CV form</h1>
+    <article>
+        <form method="post" autocomplete="off" action="{% url "add_cv" %}">
+            <span><strong>First name </strong></span>
+            <input type="text" name="first_name" autocomplete="off" style="border-color: blue;"/><br><br>
+            <span><strong>Last name </strong></span>
+            <input type="text" name="last_name" autocomplete="off" style="border-color: blue;"/><br><br>
+            <span><strong>Email </strong></span>
+            <input type="text" name="first_name" autocomplete="off" style="border-color: blue;"/><br><br>
+            <span><strong>Phone </strong></span>
+            <input type="text" name="phone_number" autocomplete="off" style="border-color: blue;"/><br><br>
+            <span><strong>URL </strong></span>
+            <input type="text" name="url" autocomplete="off" style="border-color: blue; width: 320px;"/><br><br>
+            <span><strong>Position </strong></span>
+            <select name="position">
+                <option>Iliyan</option>
+                <option>Spasi</option>
+            </select><br><br>
+            <p><strong>Technologies </strong></p>
+            <textarea rows="25" cols="90" name="technologies" autocomplete="off" style="border-color: blue;"></textarea>><br><br>
+            <p><strong>Languages </strong></p>
+            <textarea rows="7" cols="30" name="languages" autocomplete="off" style="border-color: blue;"></textarea>><br><br>
+            <p><strong>Motivation </strong></p>
+            <textarea rows="20" cols="90" name="motivation" autocomplete="off" style="border-color: blue;"></textarea>
+        </form>
+    </article>
+</body>
+</html>

@@ -19,6 +19,6 @@ from CV.views import test, add_cv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test/', test),
-    path('add-cv/', add_cv)
+    path('test/', test, name="testing"),
+    path('add-cv/', add_cv, name="add_cv")
 ]
