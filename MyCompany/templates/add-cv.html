@@ -4,33 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Add CV</title>
+    
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "add-cv.css" %}" type="text/css" />
 </head>
-<body style="background-color: #f0c6c673;">
-    <h1>CV form</h1>
+<body>
+    <h1>CV form</h1><br>
     <article>
         <form method="post" autocomplete="off" action="{% url "add_cv" %}">
+            <!-- {% csrf_token %} -->
+
             <span><strong>First name </strong></span>
-            <input type="text" name="first_name" autocomplete="off" style="border-color: blue;"/><br><br>
+            <input type="text" name="first_name" autocomplete="off" style="border-color: blue;"/><span>&emsp;</span>
+
             <span><strong>Last name </strong></span>
             <input type="text" name="last_name" autocomplete="off" style="border-color: blue;"/><br><br>
+
             <span><strong>Email </strong></span>
-            <input type="text" name="first_name" autocomplete="off" style="border-color: blue;"/><br><br>
+            <input type="text" name="email" autocomplete="off" style="border-color: blue;"/><span>&emsp;</span>
+
             <span><strong>Phone </strong></span>
             <input type="text" name="phone_number" autocomplete="off" style="border-color: blue;"/><br><br>
+
             <span><strong>URL </strong></span>
             <input type="text" name="url" autocomplete="off" style="border-color: blue; width: 320px;"/><br><br>
+
             <span><strong>Position </strong></span>
             <select name="position">
-                <option>Iliyan</option>
-                <option>Spasi</option>
-            </select><br><br>
+                {% for position in positions %}
+                    <option value="{{position.id}}">
+                        {{position.position_name}}
+                    </option>
+                {% endfor %}
+            </select><br><br><hr>
+
             <p><strong>Technologies </strong></p>
-            <textarea rows="25" cols="90" name="technologies" autocomplete="off" style="border-color: blue;"></textarea>><br><br>
-            <p><strong>Languages </strong></p>
-            <textarea rows="7" cols="30" name="languages" autocomplete="off" style="border-color: blue;"></textarea>><br><br>
+            <textarea rows="20" cols="60" name="technologies" style="border-color: blue;"></textarea>><span>&emsp;</span>
+
+            <span><strong>Languages </strong></span>
+            <textarea rows="7" cols="30" name="languages" style="border-color: blue;"></textarea>><br><br>
+
             <p><strong>Motivation </strong></p>
-            <textarea rows="20" cols="90" name="motivation" autocomplete="off" style="border-color: blue;"></textarea>
+            <textarea rows="18" cols="60" name="motivation" autocomplete="off" style="border-color: blue;"></textarea>
+            <br><hr><br>
+
+            <input type="submit" value="Send" /><br><br><br>
         </form>
     </article>
 </body>
