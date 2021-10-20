@@ -7,3 +7,9 @@ h1
 {
     text-decoration: underline;
 }
+
+img
+{
+    float: right;
+    margin-left: 20px;
+}
