@@ -4,6 +4,10 @@
     <title>
         {% block html_title %}{% endblock %}
     </title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/tasks_list.css" %}" type="text/css" />
+    {% block head %}{% endblock %}
 </head>
 
 <body>

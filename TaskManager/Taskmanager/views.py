@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Taskmanager.models import Project, Developer, Supervisor
+from Taskmanager.models import Project, Developer, Supervisor, Task
 from django.http import HttpResponse
 from django import forms
 
@@ -48,6 +48,16 @@ def display_projects(request):
 
 
     return render(request, 'displaying.html', {"action": "Display all supervisors.", "all_supervisors": all_supervisors})
+
+
+def display_tasks(request):
+    tasks_list = Task.objects.all()
+
+    return render(request, 'tasks_list.html', {"action": "Display all tasks.", "tasks_list": tasks_list})
+
+
+def task_delete_ajax(request):
+    pass
 
 
 # using HTML form
