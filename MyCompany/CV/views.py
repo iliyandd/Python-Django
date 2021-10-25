@@ -1,11 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from CV.models import CV, Position
 
 # Create your views here.
-
-def test(request):
-    return render(request, 'test.html')
 
 def add_cv(request):
     error = False
@@ -71,4 +68,9 @@ def add_cv(request):
         return render(request, 'add-cv.html', {"positions": positions})
 
 
+def display_cvs(request):
+    cvs = CV.objects.all()
+
+    return JsonResponse({"cvs": list(cvs.values())})
+    # return render(request, 'display-cvs.html', {"cvs": list(cvs.values())})
             

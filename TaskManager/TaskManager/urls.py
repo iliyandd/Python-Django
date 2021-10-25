@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Taskmanager.views import hello, save_project, display_projects, display_tasks, create_developer, task_delete_ajax
+from Taskmanager.views import hello, save_project, display_projects, create_developer
 
 admin.autodiscover()
 
@@ -25,7 +25,5 @@ urlpatterns = [
     path('', hello, name="hello_page"),
     path('saving/', save_project, name="saving_project"),
     path('display-projects/', display_projects, name="displaying_projects"),
-    path('create-developer/', create_developer, name="create_developer"),
-    path('display-tasks/', display_tasks, name="displaying_tasks"),
-    path('task-delete-ajax/', task_delete_ajax, name="task_delete_ajax")
+    path('create-developer/', create_developer, name="create_developer")
 ]
