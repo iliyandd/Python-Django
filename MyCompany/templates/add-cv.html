@@ -1,35 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Add CV</title>
-    
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static "add-cv.css" %}" type="text/css" />
-</head>
-<body>
-    <h1>CV form</h1><br>
-    <article>
-        <form method="post" autocomplete="off" action="{% url "add_cv" %}">
-            <!-- {% csrf_token %} -->
+{% extends "base.html" %}
 
-            <span><strong>First name </strong></span>
-            <input type="text" name="first_name" autocomplete="off" style="border-color: blue;"/><span>&emsp;</span>
+{% block title %}
+    <title>Add CV</title>
+{% endblock %}
+
+{% block utils %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/add-cv.css" %}" type="text/css" />
+{% endblock %}
+
+{% for msg in messages %}
+    {{msg}}
+{% endfor %}
+
+{% block header %}
+    <h1 id="header_instruction">Add your CV...</h1>
+{% endblock %}
+
+{% block content %}
+<article>
+    <div id="form_div">
+        <form id="form" method="post" autocomplete="off" action="{% url "add_cv" %}">
+            {% csrf_token %}
+
+            <label for="First name"><strong>First name </strong></label>
+            <input id="first_name" type="text" name="first_name" autocomplete="off" placeholder="First name"/><span>&emsp;</span>
 
             <span><strong>Last name </strong></span>
-            <input type="text" name="last_name" autocomplete="off" style="border-color: blue;"/><br><br>
+            <input type="text" name="last_name" autocomplete="off" placeholder="Last name"/><br><br>
 
             <span><strong>Email </strong></span>
-            <input type="text" name="email" autocomplete="off" style="border-color: blue;"/><span>&emsp;</span>
+            <input type="text" name="email" autocomplete="off" placeholder="Email"/><span>&emsp;</span>
 
             <span><strong>Phone </strong></span>
-            <input type="text" name="phone_number" autocomplete="off" style="border-color: blue;"/><br><br>
+            <input type="text" name="phone_number" autocomplete="off" placeholder="Phone"/><br><br>
 
             <span><strong>URL </strong></span>
-            <input type="text" name="url" autocomplete="off" style="border-color: blue; width: 320px;"/><br><br>
+            <input type="text" name="url" autocomplete="off" style="width: 320px;" placeholder="Url"/><br><br>
 
             <span><strong>Position </strong></span>
             <select name="position">
@@ -50,8 +57,8 @@
             <textarea rows="18" cols="60" name="motivation" autocomplete="off" style="border-color: blue;"></textarea>
             <br><hr><br>
 
-            <input type="submit" value="Send" /><br><br><br>
+            <input type="submit" value="Send" style="height: 40px; width: 75px;"/><br><br><br>
         </form>
-    </article>
-</body>
-</html>
+    </div>
+</article>
+{% endblock %}

@@ -19,7 +19,7 @@ Blank form:
 class Blank(models.Model):
     first_name = models.CharField(max_length=30, verbose_name="First_name")
     last_name = models.CharField(max_length=30, verbose_name="Last_name")
-    email = models.EmailField(verbose_name="Email")
+    email = models.EmailField(null=False, verbose_name="Email")
     phone_number = models.CharField(max_length=20, verbose_name="Phone_number")
 
     def __str__(self) -> str:
