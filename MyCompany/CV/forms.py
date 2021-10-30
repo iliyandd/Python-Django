@@ -17,7 +17,7 @@ class CvForm(forms.Form):
     last_name = forms.CharField(label="Last name", max_length=30, required=True, widget=forms.TextInput)
     email = forms.EmailField(label="Email", required=True)
     phone = forms.CharField(label="Phone", max_length=50, required=True)
-    url = forms.CharField(label="URL", max_length=150, widget=forms.TextInput)
+    url = forms.CharField(label="URL", max_length=150, required=False, widget=forms.TextInput)
     position = forms.ModelChoiceField(label="Position", queryset=Position.objects.all())
     technologies = forms.CharField(label="Technologies", widget=forms.Textarea)
     languages = forms.CharField(label="Languages", widget=forms.TextInput)
