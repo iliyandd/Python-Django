@@ -4,28 +4,45 @@
     <title>Send CV</title>
 {% endblock %}
 
+{% block utils %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add-cv.css' %}">
+{% endblock %}
+
 {% block header %}
-    <h1>CV form</h1>
+    <h1 style="position: fixed; background-color: brown;">CV form</h1><br><br>
 {% endblock %}
 
 {% block content %}
-    <div id="cv_form">
-        <form method="post" action="{% url 'add_cv' %}">
-            {% csrf_token %}
+    <div class="container">
+        <div id="form">
+            <form method="post" action="{% url 'add_cv' %}">
+                {% csrf_token %}
+                <!-- {{form.as_p}} -->
 
-            {% for field in form %}
-                <div id="field_row">
-                    {% if "Technologies:" not in field.label_tag and "Motivation:" not in field.label_tag %}
-                        <label id="label" for="{{field.id}}"><strong>{{ field.label_tag }}</strong></label>
+                {% for field in form %}
+                    {% if "Technologies:" not in field.label_tag and "Motivation:" not in field.label_tag and "Languages:" not in field.label_tag %}
+                        {% if "First name:" in field.label_tag %}
+                            <label for="{{field.id}}"><strong>{{ field.label_tag }}</strong></label>
+                            {{field}}
+                        {% elif "Last name:" in field.label_tag %}
+                            <label for="{{field.id}}"><strong>{{ field.label_tag }}</strong></label>
+                            {{field}}
+                            <br><br>
+                        {% else %}
+                            <label id="label" for="{{field.id}}"><strong>{{ field.label_tag }}</strong></label>
+                            {{field}}
+                            <br><br>
+                        {% endif %}
                     {% else %}
                         <p><label id="label" for="{{field.id}}"><strong>{{ field.label_tag }}</strong></label></p>
+                        {{field}}
+                        <br><br>
                     {% endif %}
-                    
-                    {{field}}
-                </div><br>
-            {% endfor %}
+                {% endfor %}
 
-            <button type="submit">Send</button>
-        </form>
+                <br><button type="submit">Send</button>
+            </form>
+        </div>
     </div>
 {% endblock %}

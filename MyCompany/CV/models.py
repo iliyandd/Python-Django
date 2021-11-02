@@ -17,10 +17,10 @@ Blank form:
 4. Phone number
 """
 class Blank(models.Model):
-    first_name = models.CharField(max_length=30, verbose_name="First_name")
-    last_name = models.CharField(max_length=30, verbose_name="Last_name")
+    first_name = models.CharField(max_length=30, verbose_name="First name")
+    last_name = models.CharField(max_length=30, verbose_name="Last name")
     email = models.EmailField(null=False, verbose_name="Email")
-    phone_number = models.CharField(max_length=20, verbose_name="Phone_number")
+    phone_number = models.CharField(max_length=20, verbose_name="Phone number")
 
     def __str__(self) -> str:
         return self.first_name + " " + self.last_name

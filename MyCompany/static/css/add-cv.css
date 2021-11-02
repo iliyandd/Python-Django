@@ -1,29 +1,40 @@
-body{
-    background-color: #e9dda793;
-}
-
-img{
-    float: right;
-    margin-left: 20px;
-}
-
-#form_div{
-    display: inline-block;
-    margin-left: 530px;
-    margin-top: 80px;
-    border: 3px solid black;
-    background-color: rgb(211, 200, 78);
-}
-
-#header_instruction{
-    display: block;
-    background-color: white;
-    position: fixed;
-    margin-top: 10px;
-    font-size: 50px;
-}
-
-#form{
-    padding: 10px 10px 10px 10px;
+.less_text, .choice {
+    height: 30px;
+    width: 300px;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
+}
+
+.text_area {
+    font-size: 17px;
+}
+
+.container{
+    display: block;
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    margin-left: -290px; */
+    margin: 30px 200px 30px 200px;
+    border: 3px solid rgb(224, 186, 129);
+    padding: 50px 100px 50px 100px;
+    font-size: 23px;
+    background-color: rgba(68, 138, 128, 0.472);
+}
+
+#form {
+    position: relative;
+    display: inline-block;
+    margin-left: 20%;
+    /* padding: 10px 60px 10px 60px; */
+}
+
+button {
+    height: 40px;
+    width: 80px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+    background-color: rgb(142, 195, 186);
 }
