@@ -45,19 +45,22 @@ class CVForm(ModelForm):
                 'id': 'technologies',
                 'class': 'text_area',
                 'rows': '18',
-                'cols': '80'
+                'cols': '80',
+                'placeholder': 'Technologies...'
             }),
             'languages': forms.Textarea(attrs={
                 'id': 'languages',
                 'class': 'text_area',
                 'rows': '7',
-                'cols': '30'
+                'cols': '30',
+                'placeholder': 'Languages...'
             }),
             'motivation': forms.Textarea(attrs={
                 'id': 'motivation',
                 'class': 'text_area',
                 'rows': '10',
-                'cols': '80'
+                'cols': '80',
+                'placeholder': 'Motivation...'
             })
         }
 

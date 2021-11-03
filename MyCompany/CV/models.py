@@ -35,7 +35,7 @@ CV form:
 5. Motivation
 """
 class CV(Blank):
-    url = models.CharField(max_length=150, verbose_name="Url", null=True, default=None)
+    url = models.CharField(max_length=150, verbose_name="URL", null=True, default=None)
     position = models.ForeignKey(Position, verbose_name="Position", on_delete=models.CASCADE)
     technologies = models.TextField(verbose_name="Technologies", null=False, default=None)
     languages = models.CharField(max_length=150, verbose_name="Languages", null=True)
