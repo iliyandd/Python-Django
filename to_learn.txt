@@ -1,2 +1,2 @@
-1) Django forms
-2) Django authorization
+1) Django authorization
+2) Multilingual sites
