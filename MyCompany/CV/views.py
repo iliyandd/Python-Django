@@ -17,6 +17,14 @@ def add_cv(request):
         return render(request, 'add-cv.html', {"form": form})
 
 
+def register(request):
+    pass
+
+
+def login(request):
+    pass
+
+
 # def add_cv(request):
 #     if request.POST:
 #         form = CvForm(request.POST)
