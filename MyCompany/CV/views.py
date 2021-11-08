@@ -1,9 +1,13 @@
 from django.shortcuts import redirect, render
+from django.contrib import messages
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required # If user is not loged in, he can't visit some of pages
 
-from .forms import CVForm
+from .forms import CVForm, CreateUserForm
 
 # Create your views here.
 
+@login_required(login_url='login') # restricted
 def add_cv(request):
     form = CVForm()
 
@@ -12,17 +16,52 @@ def add_cv(request):
         if form.is_valid():
             form.save()
 
-        return redirect('/add-cv/')
+        return redirect('add_cv')
     else:
         return render(request, 'add-cv.html', {"form": form})
 
 
-def register(request):
-    pass
+def user_register(request):
+    # If user isn't authenticated, he can't make new registration.
+    if request.user.is_authenticated:
+        return redirect('add_cv')
+    else:
+        form = CreateUserForm()
+
+        if request.method == "POST":
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "You create new registration.")
+
+                return redirect('login')
+
+        context = {"form": form}
+
+        return render(request, 'register.html', context)
 
 
-def login(request):
-    pass
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('add_cv')
+        else:
+            messages.info(request, "Username or password is incorrect.")
+
+    return render(request, 'login.html')
+
+
+@login_required(login_url='login') # restricted
+def user_logout(request):
+    logout(request)
+
+    return redirect('login')
 
 
 # def add_cv(request):

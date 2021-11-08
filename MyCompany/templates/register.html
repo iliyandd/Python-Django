@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Registration</title>
+{% endblock %}
+
+{% block header %}
+    <h1>Registration form</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        
+        {{form.username.label}}
+        {{form.username}}<br><br>
+        
+        {{form.email.label}}
+        {{form.email}}<br><br>
+        
+        {{form.password1.label}}
+        {{form.password1}}<br><br>
+        
+        {{form.password2.label}}
+        {{form.password2}}<br><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <!-- Print if there are any errors. -->
+    {{form.errors}}
+{% endblock %}
