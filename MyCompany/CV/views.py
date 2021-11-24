@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required # If user is not loged in, he can't visit some of pages
 
 from .forms import CVForm, CreateUserForm
+from .models import CV
 
 # Create your views here.
 
