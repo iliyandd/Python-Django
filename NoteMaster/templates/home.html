@@ -1,1 +1,19 @@
-<h1>Hi</h1>
+{% extends "base.html" %}
+
+{% block document_title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% for note in all_notes %}
+            <p>{{ note.title }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block aside_panel %}
+    <div>
+        <p>Aside panel</p>
+    </div>
+{% endblock %}

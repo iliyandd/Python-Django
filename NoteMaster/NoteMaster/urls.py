@@ -5,5 +5,7 @@ from Notes.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name="home")
+    path('', home, name="home"),
+    # path('about/', about, name="about"),
+    # path('contacts/', contacts, name="contacts"),
 ]
