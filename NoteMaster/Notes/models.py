@@ -11,9 +11,3 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class MyUser(User):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.notes = []
