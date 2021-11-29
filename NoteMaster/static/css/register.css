@@ -1,0 +1,73 @@
+#registration_title{
+    display: inline-block;
+    position: fixed;
+
+    margin-top: 0;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10% 30% 50% 70%;
+
+    background-color: skyblue;
+}
+
+#container{
+    display: inline-block;
+    position: relative;
+
+    margin-top: 10%;
+    margin-left: 34%;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-bottom: 40px;
+    padding-right: 20px;
+
+    background-color: skyblue;
+    border: 3px solid black;
+    box-shadow: 10px 10px 10px 1px gray;
+    border-radius: 20px;
+
+    font-size: 24px;
+}
+
+.registration_input{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    width: 400px;
+}
+
+#email{
+    position: relative;
+    margin-left: 41px;
+}
+
+#id_password1, #id_password2{
+    font-size: 24px;
+}
+
+#id_password1{
+    position: relative;
+    margin-left: 93px;
+}
+
+#register_submition{
+    position: relative;
+
+    margin-left: 390px;
+    padding: 3px;
+    width: 100px;
+
+    background-color: blanchedalmond;
+    border-radius: 7px;
+
+    font-size: 22px;
+}
+
+#register_submition:hover{
+    font-weight: bold;
+    border: 2px solid black;
+    cursor: pointer;
+}

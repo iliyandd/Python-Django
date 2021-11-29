@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+
+    <title>Registration</title>
+</head>
+
+<body>
+    <h1 id="registration_title">Registration form</h1><br>
+
+    <div id="container">
+        <form method="post" action="{% url 'user_register' %}">
+            {% csrf_token %}
+
+            <label for="Username"><strong>Username</strong></label>
+            {{form.username}}<br><br>
+
+            <label for="Email"><strong>Email</strong></label>
+            {{form.email}}<br><br>
+
+            <label for="Password 1"><strong>Password</strong></label>
+            {{form.password1}}<br><br>
+
+            <label for="Password 2"><strong>Confirm password</strong></label>
+            {{form.password2}}<br><br><br>
+
+            <input id="register_submition" class="registration_input" type="submit" value="Register" />
+        </form>
+
+        {{form.errors}}
+
+        <p>Already have an account? <a href="{% url 'user_login' %}">Sign in</a></p>
+    </div>
+
+    <br><br><br><hr>
+</body>
+
+</html>

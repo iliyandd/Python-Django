@@ -9,14 +9,49 @@
     {% block utils %}{% endblock %}
 </head>
 <body>
-    {% block document_header %}{% endblock %}
+    <nav>
+        <span>NOTEMANAGER</span>
+        <span>About</span>
+        <span>Contacts</span>
+    </nav>
 
-    {% block navigation %}{% endblock %}
 
     {% block content %}{% endblock %}
 
     {% block aside_panel %}{% endblock %}
     
-    {% block footer %}{% endblock %}
+
+    <footer>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Github
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="https://github.com/Iliyan0411" target="_blank">https://github.com/Iliyan0411</a>
+                        </td>
+                        <td>
+                            <p>ilian.dd00@gmail.com</p>
+                        </td>
+                        <td>
+                            <p>0896146639</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </footer>
 </body>
 </html>
