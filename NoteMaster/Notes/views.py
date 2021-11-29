@@ -9,7 +9,7 @@ from .forms import CreateUserForm, NoteForm
 # Create your views here.
 
 def user_register(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.username != "admin":
         user_id = request.user.id
 
         return redirect(f'/home/{user_id}/')
@@ -29,7 +29,7 @@ def user_register(request):
 
 
 def user_login(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.username != "admin":
         user_id = request.user.id
 
         return redirect(f'/home/{user_id}/')
@@ -61,13 +61,16 @@ def user_logout(request):
 @login_required(login_url='user_login')
 def home(request, uid):
     all_notes = Note.objects.filter(owner=uid)
+    context = {"username": request.user.username, "all_notes": all_notes}
 
-    return render(request, 'home.html', {"all_notes": all_notes})
+    return render(request, 'home.html', context)
 
 
 @login_required(login_url='user_login')
 def about(request):
-    return render(request, 'about.html')
+    context = {"to_home": f'/home/{request.user.id}/', "username": request.user.username}
+
+    return render(request, 'about.html', context)
 
 
 @login_required(login_url='user_login')

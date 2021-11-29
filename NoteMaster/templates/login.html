@@ -5,23 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
     <title>Login</title>
 </head>
 
 <body>
-    <h1>Login form</h1>
+    <h1 id="login_title">Login form</h1><br>
+    <div id="container">
+        <form method="post" action="{% url 'user_login' %}">
+            {% csrf_token %}
 
-    <form method="post" action="{% url 'user_login' %}">
-        {% csrf_token %}
+            <label for="Username"><strong>Username</strong></label>
+            <input id="username" class="login_input" type="text" name="username" required><br><br>
 
-        <label for="Username">Username</label>
-        <input type="text" name="username"><br><br>
+            <label for="Password"><strong>Password</strong></label>
+            <input id="password" class="login_input" type="password" name="password" required><br><br>
 
-        <label for="Password">Password</label>
-        <input type="password" name="password"><br><br>
+            <input id="login_submition" class="login_input" type="submit" value="Login">
+        </form>
 
-        <input type="submit" value="Login"><br><br>
-    </form>
+        <p>Don't have an account? <a href="{% url 'user_register' %}">Register</a></p>
+
+    </div>
+
+    <br><br><br><hr>
 </body>
 
 </html>

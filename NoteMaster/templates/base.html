@@ -10,9 +10,11 @@
 </head>
 <body>
     <nav>
-        <span>NOTEMANAGER</span>
-        <span>About</span>
-        <span>Contacts</span>
+        <a href={{to_home}}>NOTEMANAGER</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contacts' %}">Contacts</a>
+        <a href="{% url 'user_logout' %}">Logout</a>
+        <span>, {{username}}</span>
     </nav>
 
 
@@ -22,8 +24,8 @@
     
 
     <footer>
-        <div>
-            <table>
+        <div id="footer_container">
+            <table id="footer_table">
                 <thead>
                     <tr>
                         <th>
