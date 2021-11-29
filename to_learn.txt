@@ -1,3 +1,0 @@
-1) Django authorization
-2) Multilingual sites
-3) How to import Google Maps in site
