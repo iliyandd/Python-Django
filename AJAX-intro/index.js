@@ -5,6 +5,8 @@ $.ajax({
     type: "GET",
     url: url,
     success: function(response){
+        document.getElementById("header_1").textContent = response.count;
+
         console.log(response);
     },
     error: function(error){
