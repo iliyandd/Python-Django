@@ -10,4 +10,8 @@ def post_list_and_create(request):
 
 
 def hello_world_view(request):
+    # first_title = Post.objects.last().title
+
+    # return JsonResponse({'text': first_title})
+
     return JsonResponse({'text': 'Hello world'})
