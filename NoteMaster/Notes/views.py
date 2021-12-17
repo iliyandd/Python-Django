@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http.response import JsonResponse
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -60,8 +61,7 @@ def user_logout(request):
 
 @login_required(login_url='user_login')
 def home(request, uid):
-    all_notes = Note.objects.filter(owner=uid)
-    context = {"username": request.user.username, "all_notes": all_notes}
+    context = {"username": request.user.username}
 
     return render(request, 'home.html', context)
 
@@ -76,3 +76,18 @@ def about(request):
 @login_required(login_url='user_login')
 def contacts(request):
     return render(request, 'contacts.html')
+
+@login_required(login_url='user_login')
+def display_notes(request):
+    all_notes = Note.objects.filter(owner=request.user)
+
+    notes = []
+    for note in all_notes:
+        item = {
+            "title": note.title,
+            "content": note.content,
+            "owner": note.owner.username
+        }
+        notes.append(item)
+
+    return JsonResponse({"notes": notes})

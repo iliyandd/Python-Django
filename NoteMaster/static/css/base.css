@@ -1,0 +1,48 @@
+nav{
+    position: fixed;
+    margin: -8px;
+    top: 0;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+#nav-content{
+    position: relative;
+    padding: 15px;
+
+    background-color: skyblue;
+    color: rgb(73, 69, 69);
+    font-size: 30px;
+}
+
+.nav-text{
+    margin-left: 100px;
+}
+
+
+#nav-home{
+    margin-right: 100px;
+}
+
+footer{
+    position: absolute;
+    margin-left: -8px;
+    bottom: 0;
+    background-color: skyblue;
+    width: 100%;
+}
+
+#footer_container{
+    position: relative;
+    padding: 15px;
+    margin-left: 18%;
+
+    color: rgb(73, 69, 69);
+}
+
+td{
+    padding: 0 100px;
+}
