@@ -10,7 +10,12 @@ def post_list_and_create(request):
     return render(request, 'posts/main.html', {'qs': qs})
 
 
-def load_post_data_view(request):
+def load_post_data_view(request, num_posts):
+    visible = 3
+    upper = num_posts
+    lower = upper - visible
+    size = Post.objects.all().count()
+
     qs = Post.objects.all()
     # data = serializers.serialize('json', qs)
 
@@ -19,11 +24,13 @@ def load_post_data_view(request):
         post = {
             "id": obj.id,
             "title": obj.title,
-            "body": obj.body
+            "body": obj.body,
+            "liked": True if request.user in obj.liked.all() else False,
+            "author": obj.author.user.username
         }
         data.append(post)
 
-    return JsonResponse({"data": data})
+    return JsonResponse({"data": data[lower:upper], "size": size})
 
 
 def hello_world_view(request):
