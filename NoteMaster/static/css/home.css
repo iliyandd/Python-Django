@@ -1,0 +1,32 @@
+#display_notes{
+    font-size: 20px;
+}
+
+#display_content{
+    position: fixed;
+    margin-left: 69%;
+    background-color: rgb(233, 207, 173);
+    height: 600px;
+    width: 500px;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#note_title{
+    text-align: center;
+}
+
+.note-row:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.note-row{
+    display: inline-block;
+    border: 1px solid grey;
+    padding: 7px;
+    width: 600px;
+    background-color: rgb(205, 233, 127);
+    text-align: center;
+}
