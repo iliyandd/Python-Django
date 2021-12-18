@@ -2,21 +2,17 @@
 {% load static %}
 
 {% block document_title %}
-<title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <title>Home</title>
 {% endblock %}
 
 {% block content %}
-    <div id="display_notes"></div>
+    <div id="body-container" style="display: flex;">
+        <div id="display_notes"></div>
+        <textarea id="display_content" style="resize: none;" readonly></textarea>
+    </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="{% static 'js/home.js' %}"></script>
 {% endblock %}
-
-{% block utils %}
-{% endblock %}
-
-<!-- {% block aside_panel %}
-    <div>
-        <p>Aside panel</p>
-    </div>
-{% endblock %} -->

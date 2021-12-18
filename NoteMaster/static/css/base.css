@@ -1,8 +1,9 @@
 nav{
     position: fixed;
-    margin: -8px;
+    left: 0;
     top: 0;
     width: 100%;
+    border-style: groove;
 }
 
 a{
@@ -28,11 +29,13 @@ a{
 }
 
 footer{
-    position: absolute;
-    margin-left: -8px;
+    position: fixed;
+    left: 0;
     bottom: 0;
-    background-color: skyblue;
     width: 100%;
+    
+    background-color: skyblue;
+    border-style: groove;
 }
 
 #footer_container{
@@ -45,4 +48,8 @@ footer{
 
 td{
     padding: 0 100px;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
 }
