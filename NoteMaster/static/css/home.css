@@ -2,7 +2,12 @@
     font-size: 20px;
 }
 
+#note_title{
+    text-align: center;
+}
+
 #display_content{
+    resize: none;
     position: fixed;
     margin-left: 69%;
     background-color: rgb(233, 207, 173);
@@ -13,21 +18,36 @@
     border-radius: 5px;
 }
 
-#note_title{
-    text-align: center;
-}
-
 .note-row{
     display: inline-block;
     padding: 7px;
+    padding-top: 13px;
     width: 600px;
+    height: 30px;
     border-radius: 50% 10% / 10% 40%;
     background-color: rgb(205, 233, 127);
     text-align: center;
+    letter-spacing: 3px;
 }
 
 .note-row:hover{
     cursor: pointer;
     font-weight: bold;
     background-color: rgb(133, 156, 69);
+}
+
+.note-button{
+    padding: 10px;
+    margin-left: 20px;
+    width: 70px;
+    border: none;
+    background-color:rgb(75, 158, 190);
+    color: white;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.note-button:hover{
+    cursor: pointer;
 }
