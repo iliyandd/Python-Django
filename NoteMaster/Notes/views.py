@@ -69,7 +69,9 @@ def about(request):
 
 @login_required(login_url='user_login')
 def contacts(request):
-    return render(request, 'contacts.html')
+    context = {"to_home": '/', "username": request.user.username}
+
+    return render(request, 'contacts.html', context)
 
 @login_required(login_url='user_login')
 def display_notes(request):

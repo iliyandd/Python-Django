@@ -17,16 +17,17 @@
     text-align: center;
 }
 
+.note-row{
+    display: inline-block;
+    padding: 7px;
+    width: 600px;
+    border-radius: 50% 10% / 10% 40%;
+    background-color: rgb(205, 233, 127);
+    text-align: center;
+}
+
 .note-row:hover{
     cursor: pointer;
     font-weight: bold;
-}
-
-.note-row{
-    display: inline-block;
-    border: 1px solid grey;
-    padding: 7px;
-    width: 600px;
-    background-color: rgb(205, 233, 127);
-    text-align: center;
+    background-color: rgb(133, 156, 69);
 }
