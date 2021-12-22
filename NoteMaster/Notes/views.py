@@ -1,5 +1,6 @@
+from django.http.request import HttpRequest
 from django.shortcuts import render, redirect
-from django.http.response import JsonResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -73,6 +74,7 @@ def contacts(request):
 
     return render(request, 'contacts.html', context)
 
+
 @login_required(login_url='user_login')
 def display_notes(request):
     all_notes = Note.objects.filter(owner=request.user)
@@ -80,6 +82,7 @@ def display_notes(request):
     notes = []
     for note in all_notes:
         item = {
+            "id": note.id,
             "title": note.title,
             "content": note.content,
             "owner": note.owner.username
@@ -87,3 +90,13 @@ def display_notes(request):
         notes.append(item)
 
     return JsonResponse({"notes": notes})
+
+
+@login_required(login_url='user_login')
+def delete_note(request):
+    if request.method == "POST":
+        note_id = request.POST.get("note_id")
+        
+        Note.objects.get(id=note_id).delete()
+
+        return HttpResponse('')
