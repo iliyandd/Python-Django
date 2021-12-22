@@ -1,6 +1,14 @@
 const noteBox = document.getElementById("display_notes");
 const contentBox = document.getElementById("display_content");
+const saveButton = document.getElementById("save-button");
 let lastClickedNoteRow = -1;
+
+
+contentBox.addEventListener("input", function(){
+    if(lastClickedNoteRow > -1){
+        saveButton.classList.remove("not-visible");
+    }
+});
 
 
 function loadNotesContent(notes){
@@ -9,10 +17,10 @@ function loadNotesContent(notes){
     for(let i = 0;  i < noteRows.length; i++){
         noteRows[i].addEventListener("click", function(){
             const title = `~~~ ${notes[i].title} ~~~\n\n`;
-            contentBox.innerHTML = title;
-            contentBox.innerHTML += notes[i].content;
+            contentBox.value = title + notes[i].content;
 
             lastClickedNoteRow = notes[i].id;
+            saveButton.classList.add("not-visible");
         });
     }
 }
@@ -24,7 +32,6 @@ function loadDeleteButtons(notes){
     for(let i = 0; i < deleteButtons.length; i++){
 
         deleteButtons[i].addEventListener("click", function(){
-            console.log("Here 2");
             $.ajax({
                 type: "POST",
                 url: "/delete-note/",
@@ -32,8 +39,8 @@ function loadDeleteButtons(notes){
                     note_id: `${notes[i].id}`
                 },
                 success: function(){
-                    if(lastClickedNoteRow == notes[i].id){
-                        contentBox.innerHTML = "";
+                    if(lastClickedNoteRow === notes[i].id){
+                        contentBox.value = "";
                     }
                 },
                 error: function(){
@@ -59,8 +66,7 @@ function displayNotes(){
                     <span class="note-row">
                         <span class="note">${note.title}</span>
                     </span>
-                    <button class="note-button edit-button">Edit</button>
-                    <button class="note-button del-button">Delete</button><br><br><br>
+                    <button class="del-button">Delete</button><br><br><br>
                 `;
             });
 

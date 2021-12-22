@@ -10,8 +10,14 @@
 {% block content %}
     <div id="body-container" style="display: flex;">
         <div id="display_notes"></div>
-        <textarea id="display_content" readonly placeholder="Choose a note..."></textarea>
-    </div>
+        <div>
+            <button id="save-button" class="not-visible">Save</button>
+        </div>
+        <div>
+            <input id="note-title" placeholder="Test..." />
+            <textarea id="display_content" placeholder="Choose a note..."></textarea>
+        </div>
+    </div><br><br><br><br><br>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="{% static 'js/home.js' %}"></script>

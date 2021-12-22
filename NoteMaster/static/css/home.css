@@ -7,19 +7,24 @@
 }
 
 #display_content{
+    display: inline-block;
     resize: none;
     position: fixed;
-    margin-left: 69%;
+    /* margin-left: 68%; */
+    margin-left: 17%;
+    margin-top: 90px; /*!*/
     background-color: rgb(233, 207, 173);
-    height: 600px;
+    box-shadow: -3px 3px 10px 1px gray;
+    height: 400px; /*!600px*/
     width: 500px;
     font-size: 20px;
     padding: 10px;
+    border: none;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .note-row{
-    position: relative;
     display: inline-block;
     padding: 7px;
     padding-top: 13px;
@@ -37,7 +42,11 @@
     background-color: rgb(133, 156, 69);
 }
 
-.note-button{
+.note-row:active{
+    transform: translateX(10px);
+}
+
+.del-button{
     padding: 10px;
     margin-left: 20px;
     width: 70px;
@@ -49,6 +58,27 @@
     border-radius: 3px;
 }
 
-.note-button:hover{
+.del-button:hover{
     cursor: pointer;
+}
+
+.del-button:active{
+    box-shadow: 0 2px grey;
+    transform: translateY(4px);
+}
+
+.not-visible{
+    display: none;
+}
+
+#save-button{
+    position: relative;
+    margin-left: 310px;
+    background-color: rgb(40, 116, 146);
+    color: white;
+    border: none;
+    font-size: 26px;
+    padding: 15px;
+    border-radius: 100%;
+    letter-spacing: 1px;
 }

@@ -1,3 +1,7 @@
+body{
+    background-color: whitesmoke;
+}
+
 nav{
     position: fixed;
     left: 0;
@@ -8,6 +12,11 @@ nav{
 
 a{
     text-decoration: none;
+}
+
+#github-link{
+    color: rgb(73, 69, 69);
+    text-decoration: underline;
 }
 
 #nav-content{
@@ -36,7 +45,6 @@ a{
 }
 
 footer{
-    display: none;
     position: fixed;
     left: 0;
     bottom: 0;
