@@ -7,19 +7,16 @@ let lastClickedNoteRow = -1;
 let noteContent = "", titleContent = "";
 
 
-contentBox.addEventListener("input", function(){
-    if(lastClickedNoteRow > -1){
-        saveButton.classList.remove("not-visible");
-        noteContent = contentBox.value;
-    }
+[titleBox, contentBox].forEach(box => {
+    box.addEventListener("input", function(){
+        if(lastClickedNoteRow > -1){
+            saveButton.classList.remove("not-visible");
+            titleContent = titleBox.value;
+            noteContent = contentBox.value;
+        }
+    });
 });
 
-titleBox.addEventListener("input", function(){
-    if(lastClickedNoteRow > -1){
-        saveButton.classList.remove("not-visible");
-        titleContent = titleBox.textContent;
-    }
-});
 
 saveButton.addEventListener("click", function(){
     $.ajax({
@@ -31,7 +28,7 @@ saveButton.addEventListener("click", function(){
             content: `${noteContent}`
         },
         success: function(){
-
+            setTimeout(saveButton.classList.add("not-visible"), 1000);
         },
         error: function(){
             alert("Error with deletion of the note!");
@@ -45,7 +42,7 @@ function loadNotesContent(notes){
 
     for(let i = 0;  i < noteRows.length; i++){
         noteRows[i].addEventListener("click", function(){
-            titleBox.textContent = notes[i].title;
+            titleBox.value = notes[i].title;
             contentBox.value = notes[i].content;
 
             lastClickedNoteRow = notes[i].id;
@@ -70,6 +67,7 @@ function loadDeleteButtons(notes){
                 success: function(){
                     if(lastClickedNoteRow === notes[i].id){
                         contentBox.value = "";
+                        titleBox.value = "";
                     }
                 },
                 error: function(){
@@ -86,7 +84,6 @@ function displayNotes(){
         type: "GET",
         url: "/display-notes/",
         success: (response) => {
-            console.log("success", response);
             const notes = response.notes;
             
             noteBox.innerHTML = "";
@@ -111,4 +108,4 @@ function displayNotes(){
 
 // function calls...
 displayNotes();
-setInterval(displayNotes, 2000);
+setInterval(displayNotes, 1000);

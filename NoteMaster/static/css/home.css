@@ -73,7 +73,7 @@
 
 .del-button:hover{
     cursor: pointer;
-    background-color:rgb(51, 124, 153);
+    background-color:rgb(40, 116, 146);
 }
 
 .del-button:active{
@@ -96,4 +96,14 @@
     padding: 15px;
     border-radius: 100%;
     letter-spacing: 1px;
+}
+
+#save-button:hover{
+    cursor: pointer;
+    background-color: rgb(75, 158, 190);
+}
+
+#save-button:active{
+    box-shadow: 0 2px grey;
+    transform: translateY(4px);
 }
