@@ -6,22 +6,35 @@
     text-align: center;
 }
 
+#note-title{
+    position: absolute;
+    margin-top: 13px;
+    margin-left: 452.5px;
+    height: 20px;
+    width: 491px;
+    border: none;
+    padding: 15px;
+    background-color: rgb(233, 207, 173);
+    box-shadow: -3px 3px 10px 1px gray;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
 #display_content{
     display: inline-block;
     resize: none;
     position: fixed;
-    /* margin-left: 68%; */
-    margin-left: 17%;
-    margin-top: 90px; /*!*/
+    margin-left: 26%;
+    margin-top: 70px;
     background-color: rgb(233, 207, 173);
     box-shadow: -3px 3px 10px 1px gray;
-    height: 400px; /*!600px*/
+    height: 550px;
     width: 500px;
     font-size: 20px;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
 }
 
 .note-row{
@@ -60,6 +73,7 @@
 
 .del-button:hover{
     cursor: pointer;
+    background-color:rgb(51, 124, 153);
 }
 
 .del-button:active{
@@ -72,8 +86,9 @@
 }
 
 #save-button{
-    position: relative;
-    margin-left: 310px;
+    position: absolute;
+    margin-top: 570px;
+    margin-left: 315px;
     background-color: rgb(40, 116, 146);
     color: white;
     border: none;

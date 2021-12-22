@@ -100,3 +100,15 @@ def delete_note(request):
         Note.objects.get(id=note_id).delete()
 
         return HttpResponse('')
+
+
+@login_required(login_url='user_login')
+def edit_note(request):
+    if request.method == "POST":
+        note_id = request.POST.get("note_id")
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+
+        Note.objects.filter(id=note_id).update(title=title, content=content)
+
+        return HttpResponse('')
