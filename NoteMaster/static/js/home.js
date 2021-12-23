@@ -89,9 +89,7 @@ function displayNotes(){
             noteBox.innerHTML = "";
             notes.forEach(note => {
                 noteBox.innerHTML += `
-                    <span class="note-row">
-                        <span class="note">${note.title}</span>
-                    </span>
+                    <span class="note-row">${note.title}</span>
                     <button class="del-button">Delete</button><br><br><br>
                 `;
             });

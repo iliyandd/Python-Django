@@ -9,7 +9,7 @@
 #note-title{
     position: fixed;
     margin-top: 13px;
-    margin-left: 452.5px;
+    margin-left: 26%;
     height: 20px;
     width: 491px;
     border: none;
@@ -39,6 +39,7 @@
 
 .note-row{
     display: inline-block;
+    position: relative;
     padding: 7px;
     padding-top: 13px;
     width: 600px;
