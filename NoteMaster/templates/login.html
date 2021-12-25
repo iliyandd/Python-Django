@@ -15,7 +15,7 @@
 <body>
     <h1 id="login_title">Login form</h1><br>
     <div id="container">
-        <form method="post" action="{% url 'user_login' %}">
+        <form method="post" action="/login/">
             {% csrf_token %}
 
             <label for="Username"><strong>Username</strong></label>
@@ -27,7 +27,7 @@
             <input id="login_submition" class="login_input" type="submit" value="Login">
         </form>
 
-        <p>Don't have an account? <a href="{% url 'user_register' %}">Register</a></p>
+        <p>Don't have an account? <a href="/register/">Register</a></p>
 
     </div>
 

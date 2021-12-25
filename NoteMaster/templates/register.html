@@ -16,7 +16,7 @@
     <h1 id="registration_title">Registration form</h1><br>
 
     <div id="container">
-        <form method="post" action="{% url 'user_register' %}">
+        <form method="post" action="/register/">
             {% csrf_token %}
 
             <label for="Username"><strong>Username</strong></label>
@@ -36,7 +36,7 @@
 
         {{form.errors}}
 
-        <p>Already have an account? <a href="{% url 'user_login' %}">Sign in</a></p>
+        <p>Already have an account? <a href="/login/">Sign in</a></p>
     </div>
 
     <br><br><br><hr>

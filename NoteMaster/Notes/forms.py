@@ -41,11 +41,11 @@ class NoteForm(ModelForm):
         fields = ['title', 'content']
         widgets = {
             'title': forms.TextInput(attrs={
-                'id': 'note_title',
+                'id': 'note-title',
                 'placeholder': 'Title'
             }),
             'content': forms.Textarea(attrs={
-                'id': 'note_content',
+                'id': 'note-content',
                 'rows': '10',
                 'cols': '40'
             }) 

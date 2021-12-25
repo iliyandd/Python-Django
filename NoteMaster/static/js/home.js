@@ -25,7 +25,7 @@ saveButton.addEventListener("click", function(){
         data: {
             note_id: `${lastClickedNoteRow}`,
             title: `${titleContent}`,
-            content: `${noteContent}`,
+            content: `${noteContent}`
         },
         success: function(){
             setTimeout(saveButton.classList.add("not-visible"), 1000);
@@ -69,6 +69,7 @@ function loadDeleteButtons(notes){
                         contentBox.value = "";
                         titleBox.value = "";
                     }
+                    lastClickedNoteRow = -1;
                 },
                 error: function(){
                     alert("Error with deletion of the note!");

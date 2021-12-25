@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div id="container">
+        <form method="post" action="/new-note/">
+            <label for="Title">Title</label>
+            {{form.title}}<br><br>
+    
+            <label for="Content">Content</label><br>
+            {{form.content}}<br><br>
+
+            <input type="submit" value="Add">
+        </form>
+    </div>
+{% endblock %} 

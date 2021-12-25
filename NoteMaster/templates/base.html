@@ -14,20 +14,18 @@
     <nav>
         <div id="nav-content">
             <a id="nav-home" href={{to_home}}><span style="color: rgb(110, 80, 80);">NOTEMANAGER</span></a>
-            <span id="new-note" class="nav-text">New note</span>
-            <a class="nav-text" href="{% url 'about' %}"><span style="color: rgb(73, 69, 69);">About</span></a>
-            <a class="nav-text" href="{% url 'contacts' %}"><span style="color: rgb(73, 69, 69);">Contacts</span></a>
+            <a href="/new-note/"><span id="new-note" class="nav-text" style="color: rgb(73, 69, 69);">New note</span></a>
+            <a class="nav-text" href="/about/"><span style="color: rgb(73, 69, 69);">About</span></a>
+            <a class="nav-text" href="/contacts/"><span style="color: rgb(73, 69, 69);">Contacts</span></a>
             
             <span class="nav-text">
-                <a href="{% url 'user_logout' %}"><span style="color: rgb(73, 69, 69);">Logout({{username}})</span></a>
+                <a href="/logout/"><span style="color: rgb(73, 69, 69);">Logout({{username}})</span></a>
             </span>
         </div>
     </nav><br><br><br><br><br>
 
 
     {% block content %}{% endblock %}
-
-    {% block aside_panel %}{% endblock %}
 
     {% block scripts %}{% endblock %}
     

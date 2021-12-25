@@ -22,7 +22,7 @@ def user_register(request):
                 form.save()
                 messages.success(request, "You create new registration")
 
-                return redirect('user_login')
+                return redirect('/login/')
 
         context = {"form": form}
         return render(request, 'register.html', context)
@@ -47,35 +47,35 @@ def user_login(request):
         return render(request, 'login.html')
 
 
-@login_required(login_url='user_login')
+@login_required(login_url='/login/')
 def user_logout(request):
     logout(request)
 
-    return redirect('user_login')
+    return redirect('/login/')
 
 
-@login_required(login_url='user_login')
+@login_required(login_url='/login/')
 def home(request):
     context = {"username": request.user.username}
 
     return render(request, 'home.html', context)
 
 
-@login_required(login_url='user_login')
+@login_required(login_url='/login/')
 def about(request):
     context = {"to_home": '/', "username": request.user.username}
 
     return render(request, 'about.html', context)
 
 
-@login_required(login_url='user_login')
+@login_required(login_url='/login/')
 def contacts(request):
     context = {"to_home": '/', "username": request.user.username}
 
     return render(request, 'contacts.html', context)
 
 
-@login_required(login_url='user_login')
+@login_required(login_url='/login/')
 def display_notes(request):
     all_notes = Note.objects.filter(owner=request.user)
 
@@ -92,7 +92,29 @@ def display_notes(request):
     return JsonResponse({"notes": notes})
 
 
-@login_required(login_url='user_login')
+@login_required(login_url='/login/')
+def new_note(request):
+    form = NoteForm()
+
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+
+        try:
+            Note(title=title, content=content, owner=request.user).save()
+        except Exception:
+            messages.error(request, "Unsuccessfuly adding of new note.")
+        else:
+            messages.success(request, "You added new note.")
+
+        return redirect('/')
+
+    context = {"to_home": '/', "username": request.user.username, "form": form}
+
+    return render(request, 'new_note.html', context)
+
+
+@login_required(login_url='/login/')
 def delete_note(request):
     if request.method == "POST":
         note_id = request.POST.get("note_id")
@@ -102,7 +124,7 @@ def delete_note(request):
         return HttpResponse('')
 
 
-@login_required(login_url='user_login')
+@login_required(login_url='/login/')
 def edit_note(request):
     if request.method == "POST":
         note_id = request.POST.get("note_id")
