@@ -22,7 +22,6 @@
 }
 
 #display_content{
-    display: inline-block;
     resize: none;
     position: fixed;
     margin-left: 26%;

@@ -42,7 +42,8 @@ class NoteForm(ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={
                 'id': 'note-title',
-                'placeholder': 'Title'
+                'placeholder': 'Title',
+                'autocomplete': 'off'
             }),
             'content': forms.Textarea(attrs={
                 'id': 'note-content',

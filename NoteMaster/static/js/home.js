@@ -68,8 +68,8 @@ function loadDeleteButtons(notes){
                     if(lastClickedNoteRow === notes[i].id){
                         contentBox.value = "";
                         titleBox.value = "";
+                        lastClickedNoteRow = -1;
                     }
-                    lastClickedNoteRow = -1;
                 },
                 error: function(){
                     alert("Error with deletion of the note!");
@@ -87,16 +87,27 @@ function displayNotes(){
         success: (response) => {
             const notes = response.notes;
             
-            noteBox.innerHTML = "";
-            notes.forEach(note => {
+            if(notes.length > 0){
+                titleBox.classList.remove("not-visible");
+                contentBox.classList.remove("not-visible");
+
+                noteBox.innerHTML = "";
+                notes.forEach(note => {
                 noteBox.innerHTML += `
                     <span class="note-row">${note.title}</span>
                     <button class="del-button">Delete</button><br><br><br>
-                `;
-            });
+                    `;
+                });
 
-            loadNotesContent(notes);
-            loadDeleteButtons(notes);
+                loadNotesContent(notes);
+                loadDeleteButtons(notes);
+            }
+            else{
+                noteBox.innerHTML = "";
+                titleBox.classList.add("not-visible");
+                contentBox.classList.add("not-visible");
+            }
+            
         },
         error: (error) => {
             console.log("error", error);
