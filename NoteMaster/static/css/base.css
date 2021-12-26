@@ -1,5 +1,8 @@
-body{
-    background-color: whitesmoke;
+body {
+    background-image: url("https://www.pixel4k.com/wp-content/uploads/2020/10/white-cube-pattern-4k_1602439015.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-blend-mode: lighten;
 }
 
 nav{

@@ -15,18 +15,22 @@ class CreateUserForm(UserCreationForm):
             'username': forms.TextInput(attrs={
                 'id': 'username',
                 'class': 'registration_input',
+                'autocomplete': 'off',
             }),
             'email': forms.EmailInput(attrs={
                 'id': 'email',
                 'class': 'registration_input',
+                'autocomplete': 'off',
             }),
             'password1': forms.PasswordInput(attrs={
                 'id': 'id_password1',
                 'class': 'registration_input',
+                'autocomplete': 'off',
             }),
             'password2': forms.PasswordInput(attrs={
                 'id': 'id_password2',
                 'class': 'registration_input',
+                'autocomplete': 'off',
             }),
 
         }
@@ -42,12 +46,13 @@ class NoteForm(ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={
                 'id': 'note-title',
-                'placeholder': 'Title',
-                'autocomplete': 'off'
+                'autocomplete': 'off',
+                'placeholder': 'Title...',
             }),
             'content': forms.Textarea(attrs={
                 'id': 'note-content',
                 'rows': '10',
-                'cols': '40'
+                'cols': '40',
+                'placeholder': 'Content...',
             }) 
         }

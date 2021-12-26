@@ -1,16 +1,23 @@
 {% extends "base.html" %}
 
 
-{% block content %}
-    <div id="container">
-        <form method="post" action="/new-note/">
-            <label for="Title">Title</label>
-            {{form.title}}<br><br>
-    
-            <label for="Content">Content</label><br>
-            {{form.content}}<br><br>
+{% block document_title %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/new_note.css' %}">
 
-            <input type="submit" value="Add">
-        </form>
-    </div>
+    <title>New note</title>
+{% endblock %}
+
+
+{% block content %}
+    <form method="post" action="/new-note/">
+        <div id="form-container">
+            <p>{{form.title}}</p>
+    
+            <p>{{form.content}}</p>
+    
+            <input id="create-button" type="submit" value="Create">
+        </div>
+    </form>
+    <br><br><br><br><br><br>
 {% endblock %} 

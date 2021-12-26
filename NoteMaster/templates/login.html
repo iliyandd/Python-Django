@@ -19,7 +19,8 @@
             {% csrf_token %}
 
             <label for="Username"><strong>Username</strong></label>
-            <input id="username" class="login_input" type="text" name="username" required><br><br>
+            <input id="username" class="login_input" type="text" name="username" required autocomplete="off">
+            <br><br>
 
             <label for="Password"><strong>Password</strong></label>
             <input id="password" class="login_input" type="password" name="password" required><br><br>
