@@ -8,7 +8,7 @@
     font-size: 22px;
     width: 491px;
     border: none;
-    background-color: rgb(233, 207, 173);
+    background-color: rgb(243, 228, 209);
     padding: 15px;
     box-shadow: -3px 3px 10px 1px gray;
     text-align: center;
@@ -21,7 +21,7 @@
     height: 530px;
     width: 500px;
     border: none;
-    background-color: rgb(233, 207, 173);
+    background-color: rgb(243, 228, 209);
     padding: 10px;
     border-radius: 5px;
     margin-top: -10px;
@@ -32,7 +32,11 @@
     margin-left: 420px;
     margin-top: 30px;
     font-size: 18px;
-    padding: 5px;
+    padding: 10px;
+    background-color: rgb(75, 158, 190);
+    color: white;
+    border-radius: 3px;
+    border: none;
 }
 
 #create-button:hover{

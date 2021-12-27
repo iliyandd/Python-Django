@@ -10,9 +10,15 @@ let noteContent = "", titleContent = "";
 [titleBox, contentBox].forEach(box => {
     box.addEventListener("input", function(){
         if(lastClickedNoteRow > -1){
-            saveButton.classList.remove("not-visible");
             titleContent = titleBox.value;
             noteContent = contentBox.value;
+
+            if(titleContent){
+                saveButton.classList.remove("not-visible");
+            }
+            else{
+                saveButton.classList.add("not-visible");
+            }
         }
     });
 });
