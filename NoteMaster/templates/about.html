@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 
+
 {% block document_title %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+
     <title>About</title>
 {% endblock %}
 
+
+{% block content %}
+    <video id="vid" controls width="800" height="500"
+        <source src="{% static 'videos/tutorial.mkv' %}" type="video/mkv">
+        Error with playing of tutorial video.
+    </video>
+{% endblock %}
