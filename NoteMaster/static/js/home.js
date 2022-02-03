@@ -1,3 +1,4 @@
+let notes  = [];
 const noteBox = document.getElementById("display_notes");
 const titleBox = document.getElementById("note-title");
 const contentBox = document.getElementById("display_content");
@@ -29,11 +30,13 @@ saveButton.addEventListener("click", function(){
         type: "POST",
         url: "/edit-note/",
         data: {
-            note_id: `${lastClickedNoteRow}`,
+            note_id: `${notes[lastClickedNoteRow].id}`,
             title: `${titleContent}`,
             content: `${noteContent}`
         },
         success: function(){
+            notes[lastClickedNoteRow].title = `${titleContent}`;
+            notes[lastClickedNoteRow].content = `${noteContent}`;
             setTimeout(saveButton.classList.add("not-visible"), 1000);
         },
         error: function(){
@@ -43,7 +46,7 @@ saveButton.addEventListener("click", function(){
 });
 
 
-function loadNotesContent(notes){
+function loadNotesContent(){
     const noteRows = document.getElementsByClassName("note-row");
 
     for(let i = 0;  i < noteRows.length; i++){
@@ -51,14 +54,15 @@ function loadNotesContent(notes){
             titleBox.value = notes[i].title;
             contentBox.value = notes[i].content;
 
-            lastClickedNoteRow = notes[i].id;
+            // lastClickedNoteRow = notes[i].id;
+            lastClickedNoteRow = i;
             saveButton.classList.add("not-visible");
         });
     }
 }
 
 
-function loadDeleteButtons(notes){
+function loadDeleteButtons(){
     const deleteButtons = document.querySelectorAll(".del-button");
 
     for(let i = 0; i < deleteButtons.length; i++){
@@ -71,7 +75,8 @@ function loadDeleteButtons(notes){
                     note_id: `${notes[i].id}`,
                 },
                 success: function(){
-                    if(lastClickedNoteRow === notes[i].id){
+                    notes.splice(i, 1);
+                    if(lastClickedNoteRow === i){
                         contentBox.value = "";
                         titleBox.value = "";
                         lastClickedNoteRow = -1;
@@ -87,33 +92,35 @@ function loadDeleteButtons(notes){
 
 
 function displayNotes(){
+    if(notes.length > 0){
+        titleBox.classList.remove("not-visible");
+        contentBox.classList.remove("not-visible");
+
+        noteBox.innerHTML = "";
+        notes.forEach(note => {
+        noteBox.innerHTML += `
+            <span class="note-row">${note.title}</span>
+            <button class="del-button">Delete</button><br><br><br>
+            `;
+        });
+
+        loadNotesContent();
+        loadDeleteButtons();
+    }
+    else{
+        noteBox.innerHTML = "";
+        titleBox.classList.add("not-visible");
+        contentBox.classList.add("not-visible");
+    }
+}
+
+
+function getNotes(){
     $.ajax({
         type: "GET",
         url: "/display-notes/",
         success: (response) => {
-            const notes = response.notes;
-            
-            if(notes.length > 0){
-                titleBox.classList.remove("not-visible");
-                contentBox.classList.remove("not-visible");
-
-                noteBox.innerHTML = "";
-                notes.forEach(note => {
-                noteBox.innerHTML += `
-                    <span class="note-row">${note.title}</span>
-                    <button class="del-button">Delete</button><br><br><br>
-                    `;
-                });
-
-                loadNotesContent(notes);
-                loadDeleteButtons(notes);
-            }
-            else{
-                noteBox.innerHTML = "";
-                titleBox.classList.add("not-visible");
-                contentBox.classList.add("not-visible");
-            }
-            
+            notes = response.notes;
         },
         error: (error) => {
             console.log("error", error);
@@ -122,6 +129,8 @@ function displayNotes(){
 }
 
 
+
 // function calls...
-displayNotes();
+
+getNotes();
 setInterval(displayNotes, 1000);
