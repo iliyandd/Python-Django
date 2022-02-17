@@ -56,9 +56,9 @@ function loadNotesContent(){
 
             // lastClickedNoteRow = notes[i].id;
             lastClickedNoteRow = i;
-            saveButton.classList.add("not-visible");
         });
     }
+    saveButton.classList.add("not-visible");
 }
 
 
@@ -133,4 +133,9 @@ function getNotes(){
 // function calls...
 
 getNotes();
-setInterval(displayNotes, 1000);
+displayNotes();
+
+setInterval(function(){
+    getNotes();
+    displayNotes()
+}, 1000);
